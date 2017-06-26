@@ -6,7 +6,7 @@
       </h2>
       <div class="content">
         <ul>
-          <li>JavaScript 最新特性实现的三大黑科技</li>
+          <li><router-link to="/detail">JavaScript 最新特性实现的三大黑科技</router-link></li>
           <li>使用 Node.js 对文本内容分词和关键词抽取</li>
           <li>轻松管理你的 Node 版本</li>
         </ul>

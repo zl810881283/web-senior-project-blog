@@ -1,11 +1,10 @@
 <template>
   <header id="header" class="header row">
-    <div class="header-left col md-7">码蜂社博客</div>
-    <div class="header-right col md-4 xs-0">
+    <div class="header-left col md-8">码蜂社博客</div>
+    <div class="header-right col md-3 xs-0">
       <nav class="header-nav">
         <ul>
           <li><a href="/">主页</a></li>
-          <li><a href="/">博客</a></li>
           <li><a href="/">关于</a></li>
         </ul>
       </nav>

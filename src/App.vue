@@ -4,13 +4,13 @@
       <nav-header></nav-header>
       <div class="row">
         <div class="col md-8">
-          <articles></articles>
+          <router-view></router-view>
         </div>
         <div class="col md-4 xs-10">
           <extend></extend>
         </div>
       </div>
-      <!--<router-view></router-view>-->
+      
     </div>
   </div>
 </template>
