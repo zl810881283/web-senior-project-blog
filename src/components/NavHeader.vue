@@ -5,7 +5,7 @@
       <nav class="header-nav">
         <ul>
           <li><a href="/">主页</a></li>
-          <li><a href="/">关于</a></li>
+          <li><router-link to="/about">关于</router-link></li>
         </ul>
       </nav>
     </div>
@@ -27,7 +27,7 @@ export default {
     height: 90px;
     line-height: 90px;
     border-bottom: 1px solid #efefef;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
   }
 
   .header-left{

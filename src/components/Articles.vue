@@ -1,6 +1,6 @@
 <template>
   <div class="container-90">
-    <my-article></my-article>
+    <my-article ></my-article>
     <my-article></my-article>
     <my-article></my-article>
     
@@ -14,6 +14,8 @@ export default {
   components: {
     MyArticle,
   }
+
+
 }
 </script>
 

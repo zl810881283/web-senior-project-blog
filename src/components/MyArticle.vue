@@ -4,7 +4,7 @@
             <h1 class="title">前端自动化测试探索</h1>
             <div class="meta">
                 <span class="lable">前端</span>
-                <span class="lable">6.17.2017</span>
+                <time class="lable">6.17.2017</time>
                 <span class="">浏览 37</span>
             </div>
         </header>
@@ -43,6 +43,7 @@ article{
     font-size: 13px;
     text-align: center;
     margin-top: 20px;
+    color: #7a8599;
   }
 
   .lable::after {
