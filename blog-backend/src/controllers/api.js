@@ -6,7 +6,11 @@ import Token from '../models/token'
 
 // 文章列表
 export let getArticles = async (ctx) => {
-  let articles = await Article.findAll({order: [['id', 'DESC']]})
+  let articles = await Article.findAll({
+    order: [
+      ['id', 'DESC']
+    ]
+  })
   ctx.body = {
     result: articles,
     name: ctx.params.name,
@@ -27,11 +31,24 @@ export let saveArticle = async (ctx) => {
 // 用户注册
 export let register = async (ctx) => {
   let user = ctx.request.body
-  let token = jwt.sign({ userInfo: user }, 'some')
+  // 加密
+  let crypto = require('crypto')
+  let password = user.password
+  let shasum = crypto.createHash('sha1')
+  shasum.update(password)
+  password = shasum.digest('hex')
+  user.password = password
+  // jwt token 
+  let token = jwt.sign({userInfo: user}, 'some')
   await User.create(user)
-  User.findOne({where: user}).then((user) => {
+  User.findOne({
+    where: user
+  }).then((user) => {
     let uid = user.id
-    let tokenInfo = {userId: uid, token: token}
+    let tokenInfo = {
+      userId: uid,
+      token: token
+    }
     Token.create(tokenInfo)
   })
   // let articles = await ctx.request
@@ -43,34 +60,25 @@ export let register = async (ctx) => {
   }
 }
 
-export let Get = (ctx) => {
-  ctx.body = {
-    result: 'get',
-    name: ctx.params.name,
-    para: ctx.query
+// 用户登录
+export let login = async (ctx) => {
+  let user = ctx.request.body
+  let result = 'ok'
+  let token = ''
+  // 加密
+  let crypto = require('crypto')
+  let password = user.password
+  let shasum = crypto.createHash('sha1')
+  shasum.update(password)
+  password = shasum.digest('hex')
+  let user1 = await User.findOne({where: user})
+  if (user1 != null) {
+    token = await Token.findOne({where: {userId: user1.id}})
+  } else {
+    result = 'error'
   }
-}
-
-export let Post = async (ctx) => {
   ctx.body = {
-    result: 'post',
-    name: ctx.params.name,
-    para: ctx.request.body
-  }
-}
-
-export let Put = (ctx) => {
-  ctx.body = {
-    result: 'put',
-    name: ctx.params.name,
-    para: ctx.request.body
-  }
-}
-
-export let Delect = (ctx) => {
-  ctx.body = {
-    result: 'delect',
-    name: ctx.params.name,
-    para: ctx.request.body
+    result: result,
+    token: token
   }
 }

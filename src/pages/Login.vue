@@ -36,7 +36,24 @@ export default {
 				return
 			}
 			var formData = this.user;
-			// console.log(formData);	
+      // console.log(formData);	
+      this.$http({
+				method: 'post',
+				url: '/public/login',
+				data: formData,
+			}).then((res) => {
+        console.log(res);
+        switch (res.data.result) {
+          case 'ok':
+            localStorage.token = res.data.token
+            alert('登录成功！')
+            location.href = '/'
+            break
+          case 'error':
+            alert('用户名或密码错误！')
+            break
+        }
+			})
 			
 		}	
 	}
