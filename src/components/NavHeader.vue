@@ -6,6 +6,10 @@
         <ul>
           <li><a href="/">主页</a></li>
           <li><router-link to="/about">关于</router-link></li>
+          <li>
+            <router-link to="/post" v-if="isLogin">写文章</router-link>
+            <router-link to="/login" v-if="!isLogin">登录</router-link>
+          </li> 
         </ul>
       </nav>
     </div>
@@ -16,6 +20,15 @@
 // import Sidebar from './components/NavHeader'
 
 export default {
+  data(){
+    return{
+      isLogin:false
+    }
+  },
+  created(){
+    if (localStorage.token!='' && localStorage.token!=undefined)
+      this.isLogin = true
+  },
   components: {
     // NavHeader,
   }

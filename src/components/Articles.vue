@@ -1,9 +1,12 @@
 <template>
   <div class="container-90">
-    <my-article ></my-article>
-    <my-article></my-article>
-    <my-article></my-article>
-    
+    <!-- <div v-for="(item,index) in articles" :key="item.id"> -->
+      <my-article v-for="(item,index) in articles" 
+                  :key="item.id" 
+                  :data="item"
+                  :index="index">
+      </my-article>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -11,6 +14,21 @@
 import MyArticle from 'components/MyArticle'
 
 export default {
+
+  data(){
+    return{
+      articles: {}
+    }
+  },
+  created(){
+    this.$http.get('public/articles').then(res => {
+    // success callback
+    console.log(res.data.result);
+    this.articles = res.data.result
+    }, res => {
+    // error callback
+    })
+  },
   components: {
     MyArticle,
   }
