@@ -1,10 +1,10 @@
 <template>
 	<article>
 		<header>
-			<h1 class="title"><a href="">{{data.title}}</a></h1>
+			<h1 class="title"><router-link :to="{name:'article', params:{id: data.id}}" >{{data.title}}</router-link></h1>
 			<div class="meta">
 				<span class="lable">前端</span>
-				<time class="lable">6.17.2017</time>
+				<time class="lable">{{data.createdAt | dateFormate}}</time>
 				<span class="">浏览 37</span>
 			</div>
 		</header>
@@ -12,7 +12,7 @@
 			{{data.content}}
 		</section>
 		<div class="seemore">
-			<router-link to="/detail">查看文章</router-link>
+			<router-link :to="{name:'article', params:{id: data.id}}" >查看文章</router-link>
 		</div>
 	</article>
 </template>

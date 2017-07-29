@@ -8,6 +8,8 @@ router
     ctx.body = '可以访问！'
   })
   .get('/public/articles', controllers.api.getArticles)
+  .get('/public/article/:id', controllers.api.getArticleById)
+  .get('/public/getRecArticle', controllers.api.getRecArticle)
   .post('/public/saveArticle', controllers.api.saveArticle)
   .post('/public/register', controllers.api.register)
   .post('/public/login', controllers.api.login)

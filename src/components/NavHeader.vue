@@ -1,6 +1,6 @@
 <template>
   <header id="header" class="header row">
-    <div class="header-left col md-8">码蜂社博客</div>
+    <div class="header-left col md-8"><router-link to="/" >码蜂社博客</router-link></div>
     <div class="header-right col md-3 xs-0">
       <nav class="header-nav">
         <ul>

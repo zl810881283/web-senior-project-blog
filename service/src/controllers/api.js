@@ -18,6 +18,25 @@ export let getArticles = async (ctx) => {
   }
 }
 
+// 文章详情
+export let getArticleById = async (ctx) => {
+  let article = await Article.findOne({where: {id: ctx.params.id}})
+  ctx.body = {
+    result: article
+  }
+}
+
+// 近期文章
+export let getRecArticle = async (ctx) => {
+  let articles = await Article.findAll({limit: 3,
+    order: [
+      ['id', 'DESC']
+    ]})
+  ctx.body = {
+    result: articles
+  }
+}
+
 // 保存文章
 export let saveArticle = async (ctx) => {
   await Article.create(ctx.request.body)

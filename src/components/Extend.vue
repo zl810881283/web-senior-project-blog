@@ -6,9 +6,7 @@
       </h2>
       <div class="content">
         <ul>
-          <li><router-link to="/detail">JavaScript 最新特性实现的三大黑科技</router-link></li>
-          <li>使用 Node.js 对文本内容分词和关键词抽取</li>
-          <li>轻松管理你的 Node 版本</li>
+          <li v-for="art in recArticles"><router-link :to="{name:'article', params:{id: art.id}}">{{art.title}}</router-link></li>
         </ul>
       </div>
     </div>
@@ -64,6 +62,20 @@
 // import Sidebar from './components/NavHeader'
 
 export default {
+  data(){
+    return{
+      recArticles: {}
+    }
+  },
+  created(){
+    this.$http.get('public/getRecArticle').then(res => {
+      // success callback
+      console.log(res.data.result);
+      this.recArticles = res.data.result
+    }, res => {
+    // error callback
+    })
+  },
   components: {
     // NavHeader,
   }
